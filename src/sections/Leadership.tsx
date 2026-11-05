@@ -71,7 +71,7 @@ function Portrait({ director }: { director: Director }) {
               <p className="label text-fog">{director.name}</p>
             </div>
           )}
-          <span className="label absolute bottom-4 left-4 text-chrome/80">{director.designation}</span>
+          <span className="label absolute bottom-4 left-4 rounded-sm bg-obsidian/70 px-2.5 py-1.5 text-chrome backdrop-blur-sm">{director.designation}</span>
         </div>
       </div>
     </div>
