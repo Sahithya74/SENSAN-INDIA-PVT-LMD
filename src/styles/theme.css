@@ -1,0 +1,44 @@
+/* Matches the hero camera's switch to its portrait path (aspect < 0.9). */
+@custom-variant tall (@media (max-aspect-ratio: 9/10));
+
+/* SENSAN design tokens. Every colour, typeface and display size used on the
+   site is defined here so Tailwind utilities (bg-obsidian, font-display,
+   text-display-xl …) and hand-written CSS share one source. */
+@theme {
+  --color-obsidian: #090a0c;
+  --color-graphite: #202226;
+  --color-industrial: #34363a;
+  --color-silver: #aeb3b8;
+  --color-chrome: #d8dadd;
+  --color-porcelain: #f3f3f1;
+  /* Muted text: fog on dark surfaces (6:1 on obsidian), ash on porcelain (5.7:1). */
+  --color-fog: #8a8f95;
+  --color-ash: #5b5f65;
+  --color-hairline: rgb(174 179 184 / 0.16);
+  --color-hairline-dark: rgb(32 34 38 / 0.14);
+
+  --font-display: "Space Grotesk Variable", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --text-display-2xl: clamp(3.25rem, 10.5vw, 11rem);
+  --text-display-2xl--line-height: 0.88;
+  --text-display-2xl--letter-spacing: -0.035em;
+  --text-display-xl: clamp(2.5rem, 6.2vw, 6.5rem);
+  --text-display-xl--line-height: 0.93;
+  --text-display-xl--letter-spacing: -0.028em;
+  --text-display-lg: clamp(2rem, 4.2vw, 4.25rem);
+  --text-display-lg--line-height: 0.98;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-md: clamp(1.45rem, 2.4vw, 2.35rem);
+  --text-display-md--line-height: 1.08;
+  --text-display-md--letter-spacing: -0.012em;
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1.45;
+
+  --tracking-label: 0.22em;
+  --tracking-wide-lockup: 0.42em;
+
+  --ease-structural: cubic-bezier(0.65, 0, 0.15, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
