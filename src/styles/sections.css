@@ -1,0 +1,179 @@
+@layer components {
+  /* ── Scroll-reveal start states (only once JS has opted in) ───── */
+  .motion-ok [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  .motion-ok [data-mask] {
+    clip-path: inset(0% 0% 100% 0%);
+  }
+  .motion-ok [data-mask="left"] {
+    clip-path: inset(0% 100% 0% 0%);
+  }
+
+  /* SplitText line masks clip overflow: give descenders (g, y, p) room. */
+  .reveal-line-mask {
+    padding-bottom: 0.16em;
+    margin-bottom: -0.16em;
+  }
+
+  /* ── Shared section shell ──────────────────────────────────────── */
+  .shell {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 5vw, 72px);
+  }
+
+  .surface-light {
+    background: var(--color-porcelain);
+    color: var(--color-graphite);
+  }
+  /* Faint drafting grid for light surfaces. */
+  .drafting-grid {
+    background-image:
+      linear-gradient(rgb(32 34 38 / 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(32 34 38 / 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .drafting-grid-dark {
+    background-image:
+      linear-gradient(rgb(174 179 184 / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(174 179 184 / 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Outlined numerals / words. */
+  .outline-chrome {
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(216 218 221 / 0.55);
+  }
+  .outline-ink {
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(32 34 38 / 0.35);
+  }
+
+  /* ── Engineering drawings ──────────────────────────────────────── */
+  .drawing {
+    overflow: visible;
+  }
+  .drawing .d-line,
+  .drawing .d-dim {
+    fill: none;
+    stroke: currentColor;
+    vector-effect: non-scaling-stroke;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .drawing .d-line {
+    stroke-width: 1.35;
+  }
+  .drawing .d-dim {
+    stroke-width: 0.8;
+    opacity: 0.55;
+  }
+  .drawing .d-fill {
+    fill: currentColor;
+    opacity: 0.09;
+  }
+  .drawing .d-hatch {
+    fill: url(#hatch);
+    opacity: 0.7;
+  }
+  .drawing .d-text {
+    fill: currentColor;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    opacity: 0.6;
+    text-transform: uppercase;
+  }
+  .drawing .d-flow {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-dasharray: 2 14;
+    vector-effect: non-scaling-stroke;
+    animation: d-flow 2.4s linear infinite;
+    opacity: 0.85;
+  }
+  @keyframes d-flow {
+    to {
+      stroke-dashoffset: -32;
+    }
+  }
+
+  /* ── Domains ───────────────────────────────────────────────────── */
+  .domain-panel {
+    position: relative;
+  }
+  .domain-frame {
+    position: relative;
+    border: 1px solid rgb(174 179 184 / 0.14);
+    background:
+      radial-gradient(70% 60% at 50% 45%, rgb(52 54 58 / 0.55), transparent 75%),
+      linear-gradient(180deg, rgb(32 34 38 / 0.7), rgb(9 10 12 / 0.4));
+  }
+  .domain-frame::before,
+  .domain-frame::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: rgb(216 218 221 / 0.6);
+    border-style: solid;
+  }
+  .domain-frame::before {
+    top: -1px;
+    left: -1px;
+    border-width: 1px 0 0 1px;
+  }
+  .domain-frame::after {
+    right: -1px;
+    bottom: -1px;
+    border-width: 0 1px 1px 0;
+  }
+
+  /* ── Portrait frames ───────────────────────────────────────────── */
+  .portrait-frame {
+    position: relative;
+    overflow: hidden;
+    background: #2a2c30;
+    transform-style: preserve-3d;
+    transition: transform 0.9s var(--ease-out-expo);
+  }
+
+  /* ── Form ──────────────────────────────────────────────────────── */
+  .field {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgb(174 179 184 / 0.28);
+    padding: 14px 0 12px;
+    color: var(--color-porcelain);
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+  .field::placeholder {
+    color: rgb(138 143 149 / 0.8);
+  }
+  .field:focus {
+    outline: none;
+    border-bottom-color: var(--color-chrome);
+  }
+  .field[aria-invalid="true"] {
+    border-bottom-color: #e0928a;
+  }
+  select.field {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #aeb3b8 50%), linear-gradient(135deg, #aeb3b8 50%, transparent 50%);
+    background-position: calc(100% - 10px) 52%, calc(100% - 5px) 52%;
+    background-size: 5px 5px;
+    background-repeat: no-repeat;
+  }
+  select.field option {
+    background: var(--color-graphite);
+    color: var(--color-porcelain);
+  }
+}
