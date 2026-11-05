@@ -77,10 +77,21 @@ Either commit them from your computer, or on GitHub open
 `npm run images`, so uploaded photos appear on the live site automatically.
 Locally, run `npm run images` and review `qa-output/portraits/<name>-compare.jpg`.
 
-Crop and finish are set per portrait in `scripts/portraits.config.mjs`
-(Kavitha's uses the `professional` finish). The treatment is photographic
-only — crop, exposure, white balance, gentle contrast, edge falloff,
-sharpening. Faces are never altered.
+Crop and finish are set per portrait in `scripts/portraits.config.mjs`. The
+treatment is photographic only — crop, exposure, white balance, gentle
+contrast, edge falloff, sharpening. Faces are never altered.
+
+For a photo taken against busy surroundings, first prepare a studio master
+with `scripts/studio-backdrop.py` (needs `pip install "rembg[cpu]"`): it
+separates the subject by matting and places them on the same light studio
+backdrop as the other portraits. Kavitha's portrait was prepared this way:
+
+```bash
+python scripts/studio-backdrop.py original.png src/assets/directors/lakshmanan-kavitha.jpg \
+  --crop 118,440,490,612 --scale 2.2 --brightness 1.1
+```
+
+Only the prepared master is kept in the repository, not the original photo.
 
 ## Contact form
 
