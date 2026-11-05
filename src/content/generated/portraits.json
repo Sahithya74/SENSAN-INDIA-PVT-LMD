@@ -6,5 +6,13 @@
     "avif": "/images/directors/muthusamy-sengottuvel-arun-sanjeev-800.avif 800w, /images/directors/muthusamy-sengottuvel-arun-sanjeev-1103.avif 1103w",
     "webp": "/images/directors/muthusamy-sengottuvel-arun-sanjeev-800.webp 800w, /images/directors/muthusamy-sengottuvel-arun-sanjeev-1103.webp 1103w",
     "fallback": "/images/directors/muthusamy-sengottuvel-arun-sanjeev.jpg"
+  },
+  "lakshmanan-kavitha": {
+    "alt": "Portrait of Lakshmanan Kavitha, Director",
+    "width": 1077,
+    "height": 1346,
+    "avif": "/images/directors/lakshmanan-kavitha-800.avif 800w, /images/directors/lakshmanan-kavitha-1077.avif 1077w",
+    "webp": "/images/directors/lakshmanan-kavitha-800.webp 800w, /images/directors/lakshmanan-kavitha-1077.webp 1077w",
+    "fallback": "/images/directors/lakshmanan-kavitha.jpg"
   }
 }
