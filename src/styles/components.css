@@ -1,0 +1,125 @@
+@layer components {
+  /* ── Fragment text ─────────────────────────────────────────────── */
+  .frag-word {
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .frag-char {
+    position: relative;
+    display: inline-block;
+    perspective: 640px;
+  }
+  /* Each half's box is taller than the line box, so ascenders and descenders
+     (g, y, p…) keep their metal fill and are not clipped at tight leading. */
+  .frag-a {
+    display: inline-block;
+    padding-block: 0.18em;
+    margin-block: -0.18em;
+    clip-path: polygon(0 0, 100% 0, 100% calc(42% + 0.6px), 0 calc(58% + 0.6px));
+  }
+  .frag-b {
+    position: absolute;
+    top: -0.18em;
+    bottom: -0.18em;
+    left: 0;
+    right: 0;
+    padding-top: 0.18em;
+    display: inline-block;
+    clip-path: polygon(0 58%, 100% 42%, 100% 100%, 0 100%);
+  }
+
+  /* ── Hero ──────────────────────────────────────────────────────── */
+  .hero-text-shadow {
+    filter: drop-shadow(0 2px 14px rgb(0 0 0 / 0.72));
+  }
+
+  .hero-shade {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(130% 95% at 50% 45%, transparent 62%, rgb(9 10 12 / 0.45) 100%),
+      linear-gradient(180deg, rgb(9 10 12 / 0.35) 0%, transparent 16%, transparent 84%, rgb(9 10 12 / 0.85) 100%);
+  }
+
+  .hero-cue-line {
+    position: relative;
+    width: 1px;
+    height: 44px;
+    overflow: hidden;
+    background: rgb(174 179 184 / 0.2);
+  }
+  .hero-cue-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -40%;
+    width: 1px;
+    height: 40%;
+    background: linear-gradient(180deg, transparent, #f3f3f1);
+    animation: cue-drop 2.2s var(--ease-structural) infinite;
+  }
+  @keyframes cue-drop {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(350%); }
+  }
+
+  .hero-progress {
+    position: relative;
+    height: 1px;
+    background: rgb(174 179 184 / 0.22);
+  }
+  .hero-progress > span {
+    position: absolute;
+    inset: 0;
+    transform-origin: left center;
+    transform: scaleX(0);
+    background: linear-gradient(90deg, #aeb3b8, #f3f3f1);
+  }
+
+  /* Blueprint backdrop used when neither WebGL nor frames are available. */
+  .hero-blueprint {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-obsidian);
+    background-image:
+      radial-gradient(80% 60% at 50% 55%, rgb(52 54 58 / 0.55), transparent 70%),
+      linear-gradient(rgb(174 179 184 / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(174 179 184 / 0.06) 1px, transparent 1px);
+    background-size: auto, 48px 48px, 48px 48px;
+    background-position: center;
+  }
+
+  /* ── Navigation ────────────────────────────────────────────────── */
+  .nav-pill {
+    background: rgb(16 17 20 / 0.76);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    backdrop-filter: blur(16px) saturate(130%);
+    box-shadow:
+      0 10px 40px -12px rgb(0 0 0 / 0.6),
+      inset 0 1px 0 rgb(243 243 241 / 0.06);
+  }
+  .nav-pill[data-phase="hero"] .nav-links {
+    opacity: 0.62;
+  }
+  .nav-links {
+    transition: opacity 0.8s var(--ease-out-expo);
+  }
+  .nav-link {
+    position: relative;
+    transition: color 0.35s var(--ease-out-expo);
+  }
+  .nav-indicator {
+    position: absolute;
+    bottom: 7px;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background: linear-gradient(90deg, transparent, #f3f3f1, transparent);
+    transition:
+      transform 0.6s var(--ease-out-expo),
+      width 0.6s var(--ease-out-expo),
+      opacity 0.4s;
+    pointer-events: none;
+  }
+}
