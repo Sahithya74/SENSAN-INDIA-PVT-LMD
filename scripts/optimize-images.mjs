@@ -95,10 +95,10 @@ async function grade(input, settings) {
     const mask = await sharp(edgeMaskSvg(box.width, box.height)).greyscale().toBuffer();
     const softEdges = await sharp(softened).removeAlpha().joinChannel(mask).png().toBuffer();
     graded = await sharp(graded)
-      .composite([{ input: softEdges }, { input: falloffSvg(box.width, box.height, 0.55) }])
+      .composite([{ input: softEdges }, { input: falloffSvg(box.width, box.height, settings.falloff ?? 0.55) }])
       .toBuffer();
   } else {
-    graded = await sharp(graded).composite([{ input: falloffSvg(box.width, box.height, 0.3) }]).toBuffer();
+    graded = await sharp(graded).composite([{ input: falloffSvg(box.width, box.height, settings.falloff ?? 0.3) }]).toBuffer();
   }
   return { graded, box, original: data, originalInfo: info };
 }
@@ -135,7 +135,8 @@ async function main() {
     }
     const { graded, box, original, originalInfo } = await grade(path.join(srcDir, file), settings);
     const widths = WIDTHS.filter((w) => w <= box.width);
-    if (!widths.length) widths.push(box.width);
+    // Always offer the full resolution too, when it is meaningfully larger.
+    if (!widths.length || box.width > widths[widths.length - 1] + 100) widths.push(box.width);
 
     for (const w of widths) {
       const resized = sharp(graded).resize({ width: w });
