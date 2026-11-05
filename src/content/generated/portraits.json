@@ -1,1 +1,10 @@
-{}
+{
+  "muthusamy-sengottuvel-arun-sanjeev": {
+    "alt": "Portrait of Muthusamy Sengottuvel Arun Sanjeev, Director",
+    "width": 1103,
+    "height": 1379,
+    "avif": "/images/directors/muthusamy-sengottuvel-arun-sanjeev-800.avif 800w, /images/directors/muthusamy-sengottuvel-arun-sanjeev-1103.avif 1103w",
+    "webp": "/images/directors/muthusamy-sengottuvel-arun-sanjeev-800.webp 800w, /images/directors/muthusamy-sengottuvel-arun-sanjeev-1103.webp 1103w",
+    "fallback": "/images/directors/muthusamy-sengottuvel-arun-sanjeev.jpg"
+  }
+}
